@@ -350,6 +350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1744307961}
   - component: {fileID: 1744307960}
+  - component: {fileID: 1744307962}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -370,7 +371,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 5
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -400,6 +401,19 @@ Transform:
   - {fileID: 1745087196}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1744307962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744307959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a0a1b062fa24e42a77ba1cf72e0fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerWalkingSpeed: 25
 --- !u!1 &1745087195
 GameObject:
   m_ObjectHideFlags: 0

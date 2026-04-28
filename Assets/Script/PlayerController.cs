@@ -5,9 +5,17 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D m_RB;
     private InputActionSystem m_PlayerInputs;
-
     private Vector2 m_DirectionInput;
 
+    #region PlayerInput
+    
+    [SerializeField] private float PlayerWalkingSpeed;
+    private Vector2 m_WalingForce;
+    
+    #endregion
+    
+    
+    
     private void Awake()
     {
         m_RB = GetComponent<Rigidbody2D>();
@@ -50,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        m_RB.AddForce(m_DirectionInput, ForceMode2D.Force);
+        m_WalingForce = m_DirectionInput * PlayerWalkingSpeed;
+        m_RB.AddForce(m_WalingForce, ForceMode2D.Force);
     }
 }
