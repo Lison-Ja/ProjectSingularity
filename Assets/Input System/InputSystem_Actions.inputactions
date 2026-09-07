@@ -33,6 +33,42 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "3ce189cc-30aa-49b3-88bd-d1d1e729376c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "6a507f15-2e8e-4a95-92fc-3379febceb64",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Alt Fire",
+                    "type": "Button",
+                    "id": "77e573fb-c544-446c-a913-0b8501decfd8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Swap Weapon",
+                    "type": "Value",
+                    "id": "74de2352-ea3d-475d-afaf-fa91f37ab162",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Test",
                     "type": "Button",
                     "id": "ad1d2d0c-54e7-4c75-a406-4e3cc63c750c",
@@ -42,9 +78,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Shoot",
+                    "name": "Select Primary Weapon",
                     "type": "Button",
-                    "id": "3ce189cc-30aa-49b3-88bd-d1d1e729376c",
+                    "id": "5696f7fe-c298-4a17-a7ab-4ec2a4820923",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Select Special Weapon 1",
+                    "type": "Button",
+                    "id": "9876ae35-b853-4728-ab5c-87d4d30e1eaa",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Select Special Weapon 2",
+                    "type": "Button",
+                    "id": "b99c6392-39ba-49a2-8aa3-bd38429e9a1f",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -225,6 +279,72 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba221ae3-3ee1-48ff-851c-b270bcf292d7",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c08a395e-21d5-439e-9bba-4d967c5cb27e",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Alt Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec6e9c86-4ac4-43fe-8232-88bee2bfcb92",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swap Weapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2cc26efa-ad47-4aed-b99c-0a24d3d0716f",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Primary Weapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0fd220c0-7fab-4f85-8fa2-890bab3ada19",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Special Weapon 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6ca1da6-3625-4f37-bcfb-ce96d67b8c74",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Special Weapon 2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

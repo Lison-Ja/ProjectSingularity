@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1073d27be700864459d60d26831a6e65, type: 3}
+  m_Name: Weapon
+  m_EditorClassIdentifier: 
+  Name: Weapon
+  Animation: {fileID: 0}
+  ReloadSpeed: 3
+  SpecialWeapon: 0
+  MagazineSize: 10
+  ReserveCapasity: 1
+  BaseProjectile: {fileID: 2083473825619370026, guid: de5020e80d93b3744916595b54c02e51, type: 3}
+  BaseRateOfFire: 300
+  BaseRecoil: 2
+  BaseAmmoCost: 1
+  AltProjectile: {fileID: 2083473825619370026, guid: de5020e80d93b3744916595b54c02e51, type: 3}
+  AltRateOfFire: 500
+  AltRecoil: 2
+  AltAmmoCost: 1

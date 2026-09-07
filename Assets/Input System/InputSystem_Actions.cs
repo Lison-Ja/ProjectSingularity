@@ -119,6 +119,42 @@ public partial class @InputActionSystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""3ce189cc-30aa-49b3-88bd-d1d1e729376c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""6a507f15-2e8e-4a95-92fc-3379febceb64"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Alt Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""77e573fb-c544-446c-a913-0b8501decfd8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Swap Weapon"",
+                    ""type"": ""Value"",
+                    ""id"": ""74de2352-ea3d-475d-afaf-fa91f37ab162"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""Test"",
                     ""type"": ""Button"",
                     ""id"": ""ad1d2d0c-54e7-4c75-a406-4e3cc63c750c"",
@@ -128,9 +164,27 @@ public partial class @InputActionSystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Shoot"",
+                    ""name"": ""Select Primary Weapon"",
                     ""type"": ""Button"",
-                    ""id"": ""3ce189cc-30aa-49b3-88bd-d1d1e729376c"",
+                    ""id"": ""5696f7fe-c298-4a17-a7ab-4ec2a4820923"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select Special Weapon 1"",
+                    ""type"": ""Button"",
+                    ""id"": ""9876ae35-b853-4728-ab5c-87d4d30e1eaa"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select Special Weapon 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""b99c6392-39ba-49a2-8aa3-bd38429e9a1f"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -311,6 +365,72 @@ public partial class @InputActionSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba221ae3-3ee1-48ff-851c-b270bcf292d7"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c08a395e-21d5-439e-9bba-4d967c5cb27e"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Alt Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec6e9c86-4ac4-43fe-8232-88bee2bfcb92"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Swap Weapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2cc26efa-ad47-4aed-b99c-0a24d3d0716f"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Primary Weapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0fd220c0-7fab-4f85-8fa2-890bab3ada19"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Special Weapon 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6ca1da6-3625-4f37-bcfb-ce96d67b8c74"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Special Weapon 2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -901,8 +1021,14 @@ public partial class @InputActionSystem: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_MouseAim = m_Player.FindAction("MouseAim", throwIfNotFound: true);
         m_Player_ControllerAim = m_Player.FindAction("ControllerAim", throwIfNotFound: true);
-        m_Player_Test = m_Player.FindAction("Test", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+        m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
+        m_Player_AltFire = m_Player.FindAction("Alt Fire", throwIfNotFound: true);
+        m_Player_SwapWeapon = m_Player.FindAction("Swap Weapon", throwIfNotFound: true);
+        m_Player_Test = m_Player.FindAction("Test", throwIfNotFound: true);
+        m_Player_SelectPrimaryWeapon = m_Player.FindAction("Select Primary Weapon", throwIfNotFound: true);
+        m_Player_SelectSpecialWeapon1 = m_Player.FindAction("Select Special Weapon 1", throwIfNotFound: true);
+        m_Player_SelectSpecialWeapon2 = m_Player.FindAction("Select Special Weapon 2", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -999,8 +1125,14 @@ public partial class @InputActionSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_MouseAim;
     private readonly InputAction m_Player_ControllerAim;
-    private readonly InputAction m_Player_Test;
     private readonly InputAction m_Player_Shoot;
+    private readonly InputAction m_Player_Reload;
+    private readonly InputAction m_Player_AltFire;
+    private readonly InputAction m_Player_SwapWeapon;
+    private readonly InputAction m_Player_Test;
+    private readonly InputAction m_Player_SelectPrimaryWeapon;
+    private readonly InputAction m_Player_SelectSpecialWeapon1;
+    private readonly InputAction m_Player_SelectSpecialWeapon2;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1025,13 +1157,37 @@ public partial class @InputActionSystem: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @ControllerAim => m_Wrapper.m_Player_ControllerAim;
         /// <summary>
+        /// Provides access to the underlying input action "Player/Shoot".
+        /// </summary>
+        public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Reload".
+        /// </summary>
+        public InputAction @Reload => m_Wrapper.m_Player_Reload;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/AltFire".
+        /// </summary>
+        public InputAction @AltFire => m_Wrapper.m_Player_AltFire;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/SwapWeapon".
+        /// </summary>
+        public InputAction @SwapWeapon => m_Wrapper.m_Player_SwapWeapon;
+        /// <summary>
         /// Provides access to the underlying input action "Player/Test".
         /// </summary>
         public InputAction @Test => m_Wrapper.m_Player_Test;
         /// <summary>
-        /// Provides access to the underlying input action "Player/Shoot".
+        /// Provides access to the underlying input action "Player/SelectPrimaryWeapon".
         /// </summary>
-        public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
+        public InputAction @SelectPrimaryWeapon => m_Wrapper.m_Player_SelectPrimaryWeapon;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/SelectSpecialWeapon1".
+        /// </summary>
+        public InputAction @SelectSpecialWeapon1 => m_Wrapper.m_Player_SelectSpecialWeapon1;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/SelectSpecialWeapon2".
+        /// </summary>
+        public InputAction @SelectSpecialWeapon2 => m_Wrapper.m_Player_SelectSpecialWeapon2;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1067,12 +1223,30 @@ public partial class @InputActionSystem: IInputActionCollection2, IDisposable
             @ControllerAim.started += instance.OnControllerAim;
             @ControllerAim.performed += instance.OnControllerAim;
             @ControllerAim.canceled += instance.OnControllerAim;
-            @Test.started += instance.OnTest;
-            @Test.performed += instance.OnTest;
-            @Test.canceled += instance.OnTest;
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @Reload.started += instance.OnReload;
+            @Reload.performed += instance.OnReload;
+            @Reload.canceled += instance.OnReload;
+            @AltFire.started += instance.OnAltFire;
+            @AltFire.performed += instance.OnAltFire;
+            @AltFire.canceled += instance.OnAltFire;
+            @SwapWeapon.started += instance.OnSwapWeapon;
+            @SwapWeapon.performed += instance.OnSwapWeapon;
+            @SwapWeapon.canceled += instance.OnSwapWeapon;
+            @Test.started += instance.OnTest;
+            @Test.performed += instance.OnTest;
+            @Test.canceled += instance.OnTest;
+            @SelectPrimaryWeapon.started += instance.OnSelectPrimaryWeapon;
+            @SelectPrimaryWeapon.performed += instance.OnSelectPrimaryWeapon;
+            @SelectPrimaryWeapon.canceled += instance.OnSelectPrimaryWeapon;
+            @SelectSpecialWeapon1.started += instance.OnSelectSpecialWeapon1;
+            @SelectSpecialWeapon1.performed += instance.OnSelectSpecialWeapon1;
+            @SelectSpecialWeapon1.canceled += instance.OnSelectSpecialWeapon1;
+            @SelectSpecialWeapon2.started += instance.OnSelectSpecialWeapon2;
+            @SelectSpecialWeapon2.performed += instance.OnSelectSpecialWeapon2;
+            @SelectSpecialWeapon2.canceled += instance.OnSelectSpecialWeapon2;
         }
 
         /// <summary>
@@ -1093,12 +1267,30 @@ public partial class @InputActionSystem: IInputActionCollection2, IDisposable
             @ControllerAim.started -= instance.OnControllerAim;
             @ControllerAim.performed -= instance.OnControllerAim;
             @ControllerAim.canceled -= instance.OnControllerAim;
-            @Test.started -= instance.OnTest;
-            @Test.performed -= instance.OnTest;
-            @Test.canceled -= instance.OnTest;
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @Reload.started -= instance.OnReload;
+            @Reload.performed -= instance.OnReload;
+            @Reload.canceled -= instance.OnReload;
+            @AltFire.started -= instance.OnAltFire;
+            @AltFire.performed -= instance.OnAltFire;
+            @AltFire.canceled -= instance.OnAltFire;
+            @SwapWeapon.started -= instance.OnSwapWeapon;
+            @SwapWeapon.performed -= instance.OnSwapWeapon;
+            @SwapWeapon.canceled -= instance.OnSwapWeapon;
+            @Test.started -= instance.OnTest;
+            @Test.performed -= instance.OnTest;
+            @Test.canceled -= instance.OnTest;
+            @SelectPrimaryWeapon.started -= instance.OnSelectPrimaryWeapon;
+            @SelectPrimaryWeapon.performed -= instance.OnSelectPrimaryWeapon;
+            @SelectPrimaryWeapon.canceled -= instance.OnSelectPrimaryWeapon;
+            @SelectSpecialWeapon1.started -= instance.OnSelectSpecialWeapon1;
+            @SelectSpecialWeapon1.performed -= instance.OnSelectSpecialWeapon1;
+            @SelectSpecialWeapon1.canceled -= instance.OnSelectSpecialWeapon1;
+            @SelectSpecialWeapon2.started -= instance.OnSelectSpecialWeapon2;
+            @SelectSpecialWeapon2.performed -= instance.OnSelectSpecialWeapon2;
+            @SelectSpecialWeapon2.canceled -= instance.OnSelectSpecialWeapon2;
         }
 
         /// <summary>
@@ -1421,6 +1613,34 @@ public partial class @InputActionSystem: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnControllerAim(InputAction.CallbackContext context);
         /// <summary>
+        /// Method invoked when associated input action "Shoot" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnShoot(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Reload" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnReload(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Alt Fire" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAltFire(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Swap Weapon" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSwapWeapon(InputAction.CallbackContext context);
+        /// <summary>
         /// Method invoked when associated input action "Test" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
@@ -1428,12 +1648,26 @@ public partial class @InputActionSystem: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTest(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Shoot" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Select Primary Weapon" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnShoot(InputAction.CallbackContext context);
+        void OnSelectPrimaryWeapon(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Select Special Weapon 1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelectSpecialWeapon1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Select Special Weapon 2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelectSpecialWeapon2(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
