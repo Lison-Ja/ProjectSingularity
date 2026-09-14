@@ -159,8 +159,6 @@ public class PlayerController : MonoBehaviour
         bool isWeapom = true;
         while (isWeapom)
         {
-
-
             if (m_Weapon[m_WeaponPointer].GetWeaponProfile() != null)
             {
                 isWeapom = false;

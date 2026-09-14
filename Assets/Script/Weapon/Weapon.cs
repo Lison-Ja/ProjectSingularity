@@ -14,6 +14,11 @@ public class Weapon : MonoBehaviour
     private int m_AmmoCost;
     private GameObject m_Projectile;
     private float m_Recoil;
+    private float m_BulletSpread;
+    private FireMode m_FireMode;
+
+    private float m_BurstFireDelay;
+    private int m_NumberInBurst;
 
     private bool m_StartShooting;
     private bool m_CanShoot;
@@ -31,7 +36,10 @@ public class Weapon : MonoBehaviour
         SwitchFire();
 
         m_CurrentMag = m_WeaponStat.MagazineSize;
-        m_CurrentReserve = m_WeaponStat.MagazineSize;
+        if (m_WeaponStat.SpecialWeapon)
+        {
+            m_CurrentReserve = 3 * m_WeaponStat.MagazineSize;
+        }
     }
 
     // Update is called once per frame
@@ -45,7 +53,7 @@ public class Weapon : MonoBehaviour
         if (Time.time >= m_FireCooldown && !m_Reloading)
         {
 
-            if (m_CurrentMag > 0)
+            if (m_CurrentMag > m_AmmoCost)
             {
                 m_CanShoot = true;
             }
@@ -61,23 +69,28 @@ public class Weapon : MonoBehaviour
         // Attack Script
         if (m_CanShoot && m_StartShooting)
         {
-            BaseShoot();
+            m_CanShoot = false;
+            m_FireCooldown = Time.time + m_FireDelay;
+
+            if (m_FireMode == FireMode.Burst)
+            {
+                StartCoroutine(BurstFire());
+            }
+            else
+            {
+                Shoot();
+            }
         }
     }
 
-    private void BaseShoot()
+    private void Shoot()
     {
         Vector2 PlayerDirection = m_Player.GetPlayerDirection();
         Quaternion rotation = Quaternion.Euler(0, 0, -Mathf.Atan2(PlayerDirection.x, PlayerDirection.y) * Mathf.Rad2Deg);
         GameObject newProjectile = Instantiate(m_Projectile, transform.position, rotation);
         m_Player.GetRigidbody2D().AddForce(-PlayerDirection * m_Recoil, ForceMode2D.Impulse);
-        m_CanShoot = false;
-        m_FireCooldown = Time.time + m_FireDelay;
-        m_CurrentMag-= m_AmmoCost;
+        m_CurrentMag -= m_AmmoCost;
     }
-
-    
-
 
     public void Reload()
     {
@@ -96,9 +109,17 @@ public class Weapon : MonoBehaviour
 
     public void DoReload()
     {
-        StartCoroutine(BaseReload());
-    }
+        if (m_WeaponStat.ReloadType == ReloadType.Magazine)
+        {
+            StartCoroutine(BaseReload());
+        }
 
+        else
+        {
+            StartCoroutine(OneByOneReload());
+        }
+        
+    }
 
     public WeaponStat GetWeaponProfile()
     {
@@ -124,6 +145,14 @@ public class Weapon : MonoBehaviour
             m_Projectile = m_WeaponStat.AltProjectile;
             m_Recoil = m_WeaponStat.AltRecoil;
             m_AmmoCost = m_WeaponStat.AltAmmoCost;
+            m_BulletSpread = m_WeaponStat.AltBulletSpread;
+            m_FireMode = m_WeaponStat.AltFireMode;
+
+            if (m_FireMode == FireMode.Burst)
+            {
+                m_BurstFireDelay = 60f / (float)m_WeaponStat.AltBurstFireRate;
+                m_NumberInBurst = m_WeaponStat.AltNumberInBurst;
+            }
         }
 
         else
@@ -132,7 +161,20 @@ public class Weapon : MonoBehaviour
             m_Projectile = m_WeaponStat.BaseProjectile;
             m_Recoil = m_WeaponStat.BaseRecoil;
             m_AmmoCost = m_WeaponStat.BaseAmmoCost;
+            m_BulletSpread = m_WeaponStat.BaseBulletSpread;
+            m_FireMode = m_WeaponStat.BaseFireMode;
+            if (m_FireMode == FireMode.Burst)
+            {
+                m_BurstFireDelay = 60f / (float)m_WeaponStat.BaseBurstFireRate;
+                m_NumberInBurst = m_WeaponStat.BaseNumberInBurst;
+            }
         }
+    }
+
+    public void StopReload()
+    {
+        StopCoroutine(BaseReload());
+        StopCoroutine(OneByOneReload());
     }
 
     public void RegainAmmo()
@@ -145,8 +187,8 @@ public class Weapon : MonoBehaviour
     {
         m_CanShoot = false;
         m_Reloading = true;
-        yield return new WaitForSeconds(m_WeaponStat.ReloadSpeed);
-        
+        yield return new WaitForSeconds(m_WeaponStat.ReloadCooldown);
+
         if (m_WeaponStat.SpecialWeapon)
         {
             int ChangeInAmmo = m_WeaponStat.MagazineSize - m_CurrentMag;
@@ -154,16 +196,12 @@ public class Weapon : MonoBehaviour
             {
                 m_CurrentReserve -= ChangeInAmmo;
                 m_CurrentMag = m_WeaponStat.MagazineSize;
-                m_CanShoot = true;
-                m_Reloading = false;
             }
 
             else
             {
                 m_CurrentMag += m_CurrentReserve;
                 m_CurrentReserve = 0;
-                m_CanShoot = true;
-                m_Reloading = false;
             }
 
         }
@@ -171,10 +209,90 @@ public class Weapon : MonoBehaviour
         else
         {
             m_CurrentMag = m_WeaponStat.MagazineSize;
-            m_CanShoot = true;
-            m_Reloading = false;
         }
-        
+
+        m_CanShoot = true;
+        m_Reloading = false;
+
     }
+
+    private IEnumerator OneByOneReload()
+    {
+        Debug.Log("Start");
+        m_CanShoot = false;
+        m_Reloading = true;
+
+        yield return new WaitForSeconds(m_WeaponStat.DelayReload);
+
+        while (m_CurrentMag < m_WeaponStat.MagazineSize)
+        {
+            Debug.Log("InLoop");
+            yield return new WaitForSeconds(m_WeaponStat.ReloadCooldown);
+
+            if (m_WeaponStat.SpecialWeapon)
+            {
+                if (m_CurrentReserve <= 0)
+                {
+                    break;
+                }
+
+                if (m_CurrentReserve >= m_WeaponStat.AmountAddedPerCycle)
+                {
+                    m_CurrentMag += m_WeaponStat.AmountAddedPerCycle;
+                    m_CurrentReserve -= m_WeaponStat.AmountAddedPerCycle;
+                }
+
+                else
+                {
+                    m_CurrentMag += m_CurrentReserve;
+                    m_CurrentReserve = 0;
+                } 
+                    
+            }
+
+            else
+            {
+                m_CurrentMag += m_WeaponStat.AmountAddedPerCycle;
+            }
+
+            Debug.Log("Add bullet");
+
+            if (m_StartShooting)
+            {
+                Debug.Log("StartShooting");
+                break;
+            }
+        }
+
+        yield return new WaitForSeconds(m_WeaponStat.DelayReload);
+
+        m_CanShoot = true;
+        m_Reloading = false;
+        Debug.Log("End");
+    }
+
+    private IEnumerator BurstFire()
+    {
+
+        if (m_CurrentMag >= m_AmmoCost * m_NumberInBurst)
+        {
+            for (int i = 0; i < m_NumberInBurst; i++)
+            {
+                Shoot();
+                yield return new WaitForSeconds(m_BurstFireDelay);
+            }
+        }
+
+        else
+        {
+            int RemainBurst = m_CurrentMag / m_AmmoCost;
+            for (int i = 0; i < RemainBurst; i++)
+            {
+                Shoot();
+                yield return new WaitForSeconds(m_BurstFireDelay);
+            }
+        }
     
+    }
+
 };

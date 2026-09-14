@@ -53983,6 +53983,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1565863038318872283, guid: 4066bed9608f0664c8dc70042645d5fc, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565863038318872283, guid: 4066bed9608f0664c8dc70042645d5fc, type: 3}
+      propertyPath: m_SleepingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565863038318872283, guid: 4066bed9608f0664c8dc70042645d5fc, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565863038318872283, guid: 4066bed9608f0664c8dc70042645d5fc, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308047331830729548, guid: 4066bed9608f0664c8dc70042645d5fc, type: 3}
+      propertyPath: m_WeaponStat
+      value: 
+      objectReference: {fileID: 11400000, guid: 95ee1929391660e40b6803ee1d30d869, type: 2}
     - target: {fileID: 3740022726487056025, guid: 4066bed9608f0664c8dc70042645d5fc, type: 3}
       propertyPath: m_Name
       value: Player

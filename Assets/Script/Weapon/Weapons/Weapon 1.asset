@@ -14,15 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Weapon
   Animation: {fileID: 0}
-  ReloadSpeed: 3
   SpecialWeapon: 1
-  MagazineSize: 5
-  ReserveCapasity: 1
+  MagazineSize: 30
+  ReserveCapasity: 120
+  ReloadCooldown: 1
+  ReloadType: 0
+  AmountAddedPerCycle: 1
+  DelayReload: 0
   BaseProjectile: {fileID: 2083473825619370026, guid: de5020e80d93b3744916595b54c02e51, type: 3}
-  BaseRateOfFire: 100
-  BaseRecoil: 2
+  BaseRateOfFire: 120
+  BaseRecoil: 0.5
+  BaseBulletSpread: 0
   BaseAmmoCost: 1
+  BaseFireMode: 1
+  BaseBurstFireRate: 720
+  BaseNumberInBurst: 3
   AltProjectile: {fileID: 2083473825619370026, guid: de5020e80d93b3744916595b54c02e51, type: 3}
-  AltRateOfFire: 50
-  AltRecoil: 2
+  AltRateOfFire: 720
+  AltRecoil: 0.2
+  AltBulletSpread: 0
   AltAmmoCost: 1
+  AltFireMode: 0
+  AltBurstFireRate: 320
+  AltNumberInBurst: 4
